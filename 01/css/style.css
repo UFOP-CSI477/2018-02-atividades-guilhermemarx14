@@ -1,0 +1,16 @@
+h1 {
+	font-family: tahoma;
+	color:#483D8B;
+	text-align: center;
+}
+
+body{
+	font-family: arial;
+	background-color: #ADD8E6;
+}
+
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
