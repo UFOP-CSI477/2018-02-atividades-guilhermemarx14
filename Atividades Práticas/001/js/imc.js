@@ -3,7 +3,7 @@ function validarCampo(campo, alerta, label) {
   console.log("validarCampo: " + campo + " " + alerta + " " + label);
 
   // Validar campo
-  var valor = parseInt($(campo).val());
+  var valor = parseFloat($(campo).val());
 
   // Valor 1 -- inválido
   if ( isNaN(valor) ) {
@@ -46,31 +46,79 @@ $(document).ready(function(){
 
   $("button[name='calculo']").click(function(){
 
-    if ( validarCampo("input[name='valor1']", "#alertaV1", "#labelV1") &&
-         validarCampo("input[name='valor2']", "#alertaV2", "#labelV2")) {
+    if ( validarCampo("input[name='peso']", "#alertaPeso", "#labelPeso") &&
+     validarCampo("input[name='altura']", "#alertaAltura", "#labelAltura")) {
 
-           var n1 = parseInt( $("input[name='valor1']").val() );
-           var n2 = parseInt( $("input[name='valor2']").val() );
+     var peso = parseFloat( $("input[name='peso']").val() );
+   var altura = parseFloat( $("input[name='altura']").val() );
 
-           var res = n1 + n2;
+   var res = peso/(altura*altura);
+
+
 
            // Apresentar o resultado
-           $("input[name='resultado']").val(res);
+           $("input[name='resultado']").val(res.toFixed(2));
 
-    } else {
-      $("input[name='resultado']").val("");
-    }
+           $("#result").slideDown();
 
+           var minIdeal = 18.5*altura*altura;
+           var maxIdeal = 24.9*altura*altura;
+
+           var Texto;
+           if(res<18.5){
+            Texto = "Subnutrição!!";
+
+            $("#result").removeClass("alert-warning");
+            $("#result").removeClass("alert-success");
+            $("#result").addClass("alert-danger");
+          }else if (res<24.9){
+            Texto = "Peso saudável!!";
+            $("#result").removeClass("alert-danger");
+            $("#result").removeClass("alert-warning");
+            $("#result").addClass("alert-success");
+          }
+          else if(res<29.9){
+            Texto = "Sobrepeso!!";
+            $("#result").removeClass("alert-success");
+            $("#result").removeClass("alert-danger");
+            $("#result").addClass("alert-warning");
+          }
+          else if (res<34.9){
+            Texto = "Obesidade grau 1!!";
+            $("#result").removeClass("alert-warning");
+            $("#result").removeClass("alert-success");
+            $("#result").addClass("alert-danger");
+          }
+          else if (res<39.9){
+            Texto = "Obesidade grau 2!!";
+            $("#result").removeClass("alert-warning");
+            $("#result").removeClass("alert-success");
+            $("#result").addClass("alert-danger");
+          }
+          else {Texto = "Obesidade grau 3!!";
+          $("#result").removeClass("alert-warning");
+          $("#result").removeClass("alert-success");
+          $("#result").addClass("alert-danger");}
+
+
+
+          $("#resulttext").text(Texto+" Seu peso ideal é entre " + minIdeal.toFixed(2) + " e " + maxIdeal.toFixed(2) + " quilogramas.");
+
+        } else {
+          $("input[name='resultado']").val("");
+        }
+
+      });
+
+  $("input[name='peso']").focusout(function(){
+    validarCampo("input[name='peso']", "#alertaPeso", "#labelPeso");
   });
 
-  $("input[name='valor1']").focusout(function(){
-    validarCampo("input[name='valor1']", "#alertaV1", "#labelV1");
+  $("input[name='altura']").focusout(function(){
+    validarCampo("input[name='altura']", "#alertaAltura", "#labelAltura");
   });
 
-  $("input[name='valor2']").focusout(function(){
-    validarCampo("input[name='valor2']", "#alertaV2", "#labelV2");
-  });
-
+  
 
 
 });
