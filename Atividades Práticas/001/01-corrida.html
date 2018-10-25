@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Corrida de Carrinhos de Rolimã</title>
+  <script src="./js/jquery-3.3.1.js"></script>
+  <script src="./js/corrida.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div id="entrada" class="conteiner-fluid jumbotron">
+    <h1 id="textDadosEntrada">Dados de entrada: </h1>
+    <hr class="my-4">
+
+    <form>
+      <div class="form-row">
+        <div class="col-sm-1">
+          <div class="form-group">
+            <label for="posicaotext">Largada</label>
+            <input type="number" class="form-control" id="posicao0">
+          </div>
+        </div>
+
+        <div class="col-sm-9">
+          <div class="form-group">
+            <label for="nametext">Nome do Competidor</label>
+            <input type="text" id="nome0" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="form-group">
+            <label for="tempotext">Tempo em segundos</label>
+            <input type="number" id="tempo0" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-sm-1">
+          <div class="form-group">
+            <input type="number" class="form-control" id="posicao1">
+          </div>
+        </div>
+
+        <div class="col-sm-9">
+          <div class="form-group">
+            <input type="text" id="nome1" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="form-group">
+            <input type="number" id="tempo1" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-sm-1">
+          <div class="form-group">
+            <input type="number" class="form-control" id="posicao2">
+          </div>
+        </div>
+
+        <div class="col-sm-9">
+          <div class="form-group">
+            <input type="text" id="nome2" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="form-group">
+            <input type="number" id="tempo2" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-sm-1">
+          <div class="form-group">
+            <input type="number" class="form-control" id="posicao3">
+          </div>
+        </div>
+
+        <div class="col-sm-9">
+          <div class="form-group">
+            <input type="text" id="nome3" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="form-group">
+            <input type="number" id="tempo3" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-sm-1">
+          <div class="form-group">
+            <input type="number" class="form-control" id="posicao4">
+          </div>
+        </div>
+
+        <div class="col-sm-9">
+          <div class="form-group">
+            <input type="text" id="nome4" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="form-group">
+            <input type="number" id="tempo4" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-sm-1">
+          <div class="form-group">
+            <input type="number" class="form-control" id="posicao5">
+          </div>
+        </div>
+
+        <div class="col-sm-9">
+          <div class="form-group">
+            <input type="text" id="nome5" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="form-group">
+            <input type="number" id="tempo5" class="form-control">
+          </div>
+        </div>
+      </div>
+      <input id="continuar" class="btn btn-primary float-right" value="Continuar">
+    </form>
+  </div>
+
+  <div id="saida" class="conteiner-fluid jumbotron">
+    <h1>Resultado:</h1>
+    <hr class="my-4">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped table-hover text-center">
+        <thead class="thead-dark">
+          <tr>
+            <th >Chegada</th>
+            <th>Largada</th>
+            <th>Nome</th>
+            <th>Tempo</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="linha0">
+            <td id="chegadaLinha0"></td>
+            <td id="largadaLinha0"></td>
+            <td id="nomeLinha0"></td>
+            <td id="tempoLinha0"></td>
+            <td id="resultadoLinha0"></td>
+          </tr>
+          <tr id="linha1">
+            <td id="chegadaLinha1"></td>
+            <td id="largadaLinha1"></td>
+            <td id="nomeLinha1"></td>
+            <td id="tempoLinha1"></td>
+            <td id="resultadoLinha1"></td>
+          </tr>
+          <tr id="linha2">
+            <td id="chegadaLinha2"></td>
+            <td id="largadaLinha2"></td>
+            <td id="nomeLinha2"></td>
+            <td id="tempoLinha2"></td>
+            <td id="resultadoLinha2"></td>
+          </tr>
+          <tr id="linha3">
+            <td id="chegadaLinha3"></td>
+            <td id="largadaLinha3"></td>
+            <td id="nomeLinha3"></td>
+            <td id="tempoLinha3"></td>
+            <td id="resultadoLinha3"></td>
+          </tr>
+          <tr id="linha4">
+            <td id="chegadaLinha4"></td>
+            <td id="largadaLinha4"></td>
+            <td id="nomeLinha4"></td>
+            <td id="tempoLinha4"></td>
+            <td id="resultadoLinha4"></td>
+          </tr>
+          <tr id="linha5">
+            <td id="chegadaLinha5"></td>
+            <td id="largadaLinha5"></td>
+            <td id="nomeLinha5"></td>
+            <td id="tempoLinha5"></td>
+            <td id="resultadoLinha5"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
