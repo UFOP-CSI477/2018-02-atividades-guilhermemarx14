@@ -6,6 +6,9 @@
 
   </head>
   <body>
+    @if( Session::has('mensagem'))
+      <h1>{{ Session::get('mensagem') }}</h1>
+    @endif
 
     <ul>
         <li><a href="/">Principal</a></li>
