@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cidade;
-
+use App\Estado;
 class CidadeController extends Controller
 {
     /**
@@ -25,7 +25,8 @@ class CidadeController extends Controller
      */
     public function create()
     {
-        //
+      $estados = Estado::orderBy('nome')->get();
+        return view('cidades.create',[ 'estados' => $estados ] );
     }
 
     /**
@@ -36,7 +37,8 @@ class CidadeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Cidade::create($request->all());
+      return redirect('/cidades');
     }
 
     /**
@@ -56,9 +58,9 @@ class CidadeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cidade $cidade)
     {
-        //
+        return view('cidades.edit')->with('cidade',$cidade)->with('estados',Estado::orderBy('nome')->get());
     }
 
     /**
@@ -68,9 +70,12 @@ class CidadeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cidade $cidade)
     {
-        //
+        $cidade->fill($rerquest->all());
+        $cidade->save();
+        session()->flash('mensagem','Cidade Atualizada com sucesso');
+        return redirect()->route('cidades.index');
     }
 
     /**

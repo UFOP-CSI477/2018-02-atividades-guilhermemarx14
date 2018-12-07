@@ -92,8 +92,12 @@ class EstadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Estado $estado)
     {
-        //
+        //validacao -> chave estrangeira
+
+        $estado->delete();
+        session()->flash('mensagem','Estado excluído com sucesso.');
+        return redirect()->route('estados.index');
     }
 }
